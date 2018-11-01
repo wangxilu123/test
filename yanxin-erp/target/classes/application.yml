@@ -1,0 +1,61 @@
+server:
+    port: 8076
+beetlsql:
+  enabled: false
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://47.104.226.173:41201/eureka/
+
+    instance:
+      lease-renewal-interval-in-seconds: 48
+      lease-expiration-duration-in-seconds: 28
+      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+      hostname: ${spring.cloud.client.ipAddress}
+      #注册时使用ip而不是主机名
+      prefer-ip-address: true
+      #如果是swagger 文档，直接写http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+      status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/
+      health-check-url: http://${spring.cloud.client.ipAddress}:${server.port}/    
+  
+spring:
+    #thymeleaf
+    thymeleaf:
+      mode: LEGACYHTML5
+    #AOP
+    aop:
+      auto: true
+      proxy-target-class: true
+    # 如果是测试环境则dev_model=true 不做验证码校验
+    dev_model: false
+    #开启redis 缓存session的两种方法一个是session.store 另外一个是注解 @EnableRedisHttpSession
+    session:
+      store-type: redis
+      
+    datasource:
+      readSize: 1
+        # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+      write:
+        url: jdbc:mysql://47.104.226.173:3306/cxgm?characterEncoding=utf-8
+        username: root
+        password: '*Cxgm@App2018*'
+        driver-class-name: com.mysql.jdbc.Driver
+        validationQuery: select 'x'
+
+      read:
+        url: jdbc:mysql://47.104.226.173:3306/cxgm?characterEncoding=utf-8
+        username: root
+        password: '*Cxgm@App2018*'
+        driver-class-name: com.mysql.jdbc.Driver
+        validationQuery: select 'x'
+
+    redis:
+        database: 0
+        host: 127.0.0.1
+        port: 21354
+        password: wxl*$556633$
+logging:
+    config: classpath:logback.xml
+    
