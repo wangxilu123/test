@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: yanxin-erp
+Implementation-Version: 1.0
+Built-By: wangx
+Implementation-Vendor-Id: com.yanxin
+Build-Jdk: 1.8.0_151
+Implementation-URL: http://projects.spring.io/spring-boot/yanxin-paren
+ t/yanxin-erp/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
